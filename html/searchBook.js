@@ -9,9 +9,9 @@ function searchBook(targetData){
           author: $("#bookAuthor").val()
         },
         function(data){
-			 console.log(targetData);
-			targetData.my+=1;
-            console.log(targetData);
+			 console.log(data);
+			getData=data;
+            //console.log(data);
         });
 }
 loadTable=function( myData, tableId)
