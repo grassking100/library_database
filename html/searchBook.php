@@ -1,7 +1,9 @@
 <?php
 	$servername = "localhost";
-	$username = "root";
-	$password = "ntnu1234";
+	$username = "newuser2";
+	$password="newpassword";
+	//$username = "root";
+	//$password = "ntnu1234";
 	$database="library";
 	//
 	//port:3306
@@ -10,7 +12,8 @@
 
 	// Check connection
 	if ($conn->connect_error) {
-		header('Content-Type:text/plain');
+		//header('Content-Type:text/plain');
+		//echo "false";
 		die("Connection failed: " . $conn->connect_error);
 	} 
 	else
@@ -52,13 +55,13 @@
 			}
 			else
 			{
-				echo "Fail to convert query to json\n";//$result;
+				//echo "Fail to convert query to json\n";//$result;
 			}
 		
 		}
 		else
 		{
-			echo "fail to query\n";
+		//	echo "fail to query\n";
 		}
 		
 		$conn->close();

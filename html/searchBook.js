@@ -16,7 +16,17 @@ searchBook=function(condition){
 		  operation:$("#operation").val()
         },
         function(data){
-			loadTable(data,"#BookTable");
+			try
+			{
+			   var json = JSON.parse("\""+data+"\"");
+			  
+			   loadTable(data,"#BookTable");
+			}
+			catch(e)
+			{
+			   alert("Query fail");
+			}
+			//
         });
 		//alert(condition);
 		return false;
