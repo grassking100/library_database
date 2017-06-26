@@ -10,8 +10,6 @@
 		} 
 		else
 		{
-
-
 			$sql = "SELECT * FROM library.user where account=\"".$account."\" and password=\"".$password."\"";
 				//		echo $sql;
 			$result = $conn->query($sql);

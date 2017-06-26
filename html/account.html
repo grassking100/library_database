@@ -13,21 +13,156 @@
 		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
 		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
 		<script src="account.js" type="text/javascript"></script>
-
 	</head>
 	<body>
-		<label>Login</label>
+		<div class="container">
+			<label>Login</label>
 			<form action="" method="post" >
 				Account&nbsp;&nbsp;<input name="Account" type="text" id="account"/><br /><br />
-				Password<input name="Password" type="password" id="password"/><br /><br />
+				Password&nbsp;&nbsp;<input name="Password" type="password" id="password"/><br /><br />
 				&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
 				&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" onclick="return login();"/>
 			</form>
-			<br/>
-			<br/>
-		<label>User information</label>
+		</div>
+		<br/>
+
 		<table  border="1px" id="accountTable" class="table table-hover">
-			
 		</table>
+		<br/>
+
+		<div class="container">
+		  <button type="button" class="btn btn-primary" id="btnUser">Control user</button>  
+		  <button type="button" class="btn btn-success" id="btnBook">Control book</button>
+		  <button type="button" class="btn btn-info" id="btnAuthor">Control author</button>  		  
+		  <button type="button" class="btn btn-warning" id="btnPublisher">Control publisher</button>  		  
+		  <button type="button" class="btn btn-danger" id="btnPhysicalBook">Control physical book</button>  		  
+		</div>
+		<br/>
+
+		<div id="publisherPanel" class="bg-warning text-white">
+			<label>Publisher Panel</label>
+			<div class="row">
+				<div class="col-lg-6">
+					<form action="" method="post" class="bg-success text-white">
+						<label>Add Publisher</label><br/>
+						Name&nbsp;&nbsp;<input name="PublisherName" type="text" id="PublisherName"/><br /><br />
+						Address&nbsp;&nbsp;<input name="PublisherAddress" type="text" id="PublisherAddress"/><br /><br />
+						Phone number&nbsp;&nbsp;<input name="PublisherPhoneNumber" type="tel" id="PublisherPhoneNumber"/><br /><br />
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+					</form>
+				</div>
+				<div class="col-lg-6">
+					<form action="" method="post" class="bg-info text-white">
+						<label>Delete Publisher</label><br/>
+						Author id&nbsp;&nbsp;<input name="PublisherID" type="text" id="PublisherID"/><br /><br />
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<br/>
+
+		<div id="authorPanel" class="bg-warning text-white">
+			<label>Author Panel</label>
+			<div class="row">
+				<div class="col-lg-6">
+					<form action="" method="post" class="bg-success text-white">
+						<label>Add Author</label><br/>
+						Name&nbsp;&nbsp;<input name="AuthorName" type="text" id="AuthorName"/><br /><br />
+						Email&nbsp;&nbsp;<input name="AuthorEmail" type="email" id="AuthorEmail"/><br /><br />
+						Phone number&nbsp;&nbsp;<input name="AuthorPhoneNumber" type="tel" id="AuthorPhoneNumber"/><br /><br />
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+					</form>
+				</div>
+				<div class="col-lg-6">
+					<form action="" method="post" class="bg-info text-white">
+						<label>Delete Author</label><br/>
+						Author id&nbsp;&nbsp;<input name="AuthorID" type="text" id="AuthorID"/><br /><br />
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<br/>
+		<div id="userPanel" class="bg-warning text-white">
+			<label>User Panel</label>
+			<div class="row">
+				<div class="col-lg-6">
+					<form action="" method="post" class="bg-success text-white">
+						<label>Add User</label><br/>
+						Name&nbsp;&nbsp;<input name="UserName" type="text" id="UserName"/><br /><br />
+						Account&nbsp;&nbsp;<input name="Account" type="text" id="Account"/><br /><br />
+						Password&nbsp;&nbsp;<input name="UserPassword" type="password" id="UserPassword"/><br /><br />
+						Birthday&nbsp;&nbsp;<input name="Birthday" type="date" id="Birthday"/><br /><br />
+						Email&nbsp;&nbsp;<input name="UserEmail" type="email" id="UserEmail"/><br /><br />
+						Is administrator:&nbsp;&nbsp;<input type="checkbox" name="IsAdministrator" id="IsAdministrator"/><br>
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+					</form>
+				</div>
+				<div class="col-lg-6">
+					<form action="" method="post" class="bg-info text-white">
+						<label>Delete User</label><br/>
+						Account&nbsp;&nbsp;<input name="Account" type="text" id="Account"/><br /><br />
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<br/>
+
+		<div id="bookPanel" class="bg-warning text-white">
+			<label>Book Panel</label>
+			<div class="row">
+				<div class="col-lg-6">
+					<form action="" method="post" class="bg-success text-white">
+						<label>Add Book</label><br/>
+						Title&nbsp;&nbsp;<input name="Title" type="text" id="Title"/><br /><br />
+						Author id&nbsp;&nbsp;<input name="Author" type="number" id="Author"/><br /><br />
+						Language&nbsp;&nbsp;<input name="Language" type="text" id="Language"/><br /><br />
+						Publish date&nbsp;&nbsp;<input name="PublishDate" type="date" id="PublishDate"/><br /><br />
+						Publisher id&nbsp;&nbsp;<input name="Publisher" type="number" id="Publisher"/><br /><br />
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+					</form>
+				</div>
+				<div class="col-lg-6">
+					<form action="" method="post" class="bg-info text-white">
+						<label>Delete User</label><br/>
+						Book id&nbsp;&nbsp;<input name="BookID" type="text" id="BookID"/><br /><br />
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+					</form>
+				</div>
+			</div>
+		</div>
+		<br/>
+
+		<div id="physicalBookPanel" class="bg-warning text-white">
+			<label>Physical Book Panel</label>
+			<div class="row">
+				<div class="col-lg-6">
+					<form action="" method="post" class="bg-success text-white">
+						<label>Add Physical Book</label><br/>
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+					</form>
+				</div>
+				<div class="col-lg-6">
+					<form action="" method="post" class="bg-info text-white">
+						<label>Delete Physical Book</label><br/>
+						Logical Book id&nbsp;&nbsp;<input name="SubBookID" type="number" id="SubBookID"/><br /><br />
+						Logical Physical id&nbsp;&nbsp;<input name="SubPhysicalBookID" type="number" id="SubPhysicalBookID"/><br /><br />
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+					</form>
+				</div>
+			</div>
+		</div>
 	</body>
 </html>

@@ -11,6 +11,7 @@ login=function(){
 			   var json = JSON.parse(data);		
 			   if(json.length!=0)
 			   {
+
 				   loadUserTable(json,"#accountTable");
 			   }
 			   else
@@ -51,4 +52,56 @@ loadUserTable=function( myData, tableId)
 		data: myData
 	}
 );
+}
+$(document).ready(function(){
+
+	$("#btnUser").click(
+		function()
+		{
+			$("#userPanel").toggle();
+		}
+	),
+	$("#btnBook").click(
+		function()
+		{
+			$("#bookPanel").toggle();
+		}
+	),
+	$("#btnAuthor").click(
+		function()
+		{
+			$("#authorPanel").toggle();
+		}
+	),
+	$("#btnPublisher").click(
+		function()
+		{
+			$("#publisherPanel").toggle();
+		}
+	),
+	$("#btnPhysicalBook").click(
+		function()
+		{
+			$("#physicalBookPanel").toggle();
+		}
+	)
+});
+addUser=function(){
+		console.log("Start add user\n");
+        $.post("addUser.php?",
+        {
+	      Name :$("#Name").val(),
+          Account :$("#Account").val(),
+          Password: $("#Password").val(),
+		  Birthday: $("#Birthday").val(),
+		  Email: $("#Email").val(),
+		  IsAdministrator: $("#IsAdministrator").val()
+        },
+        function(data)
+		{
+			alert(data);
+		}
+		)
+
+		return false;
 }
