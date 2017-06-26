@@ -1,25 +1,51 @@
-getData={my:12};
+
 $(document).ready(function(){
-    $("#bookSubmit").click(searchBook(getData));
+    /*$("#bookSubmit").click(function(){
+		//alert( "Handler for .click() called." );
+		//searchBook(getData);
+		//this.loadTable(1,"#BookTable");
+		});*/
 });
-function searchBook(targetData){
+searchBook=function(condition){
+		console.log("Start search book\n");
         $.post("searchBook.php?",
         {
+		  useCondition:condition,
           title: $("#bookTitle").val(),
-          author: $("#bookAuthor").val()
+          author: $("#bookAuthor").val(),
+		  operation:$("#operation").val()
         },
         function(data){
-			 console.log(data);
-			getData=data;
-            //console.log(data);
+			loadTable(data,"#BookTable");
         });
+		//alert(condition);
+		return false;
 }
+
+
 loadTable=function( myData, tableId)
 {
-	var $table = $(tableId);
-	$(function () {
-    $table.bootstrapTable({
-        data: myData
-    });
-});
+	 $(tableId).bootstrapTable("destroy"); 
+	//console.log(myData);
+    $(tableId).bootstrapTable(
+	{	
+	 columns: [{
+			field: 'book_name',
+			title: 'Title'
+		}, {
+			field: 'author_name',
+			title: 'Author'
+		}, {
+			field: 'language',
+			title: 'Language'
+		}, {
+			field: 'publish_date',
+			title: 'publish date'
+		}, {
+			field: 'publisher_name',
+			title: 'publisher'
+		}],
+		data: myData
+	}
+);
 }
