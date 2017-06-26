@@ -18,9 +18,8 @@ searchBook=function(condition){
         function(data){
 			try
 			{
-			   var json = JSON.parse("\""+data+"\"");
-			  
-			   loadTable(data,"#BookTable");
+			   var json = JSON.parse("\""+data+"\"");		   
+			   loadBookTable(data,"#BookTable");
 			}
 			catch(e)
 			{
@@ -33,10 +32,10 @@ searchBook=function(condition){
 }
 
 
-loadTable=function( myData, tableId)
+loadBookTable=function( myData, tableId)
 {
 	 $(tableId).bootstrapTable("destroy"); 
-	//console.log(myData);
+	
     $(tableId).bootstrapTable(
 	{	
 	 columns: [{

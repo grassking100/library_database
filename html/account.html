@@ -3,34 +3,31 @@
 	<head>
 		<meta content="zh-tw" http-equiv="Content-Language" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
 		<title>User information</title>
-		<script type="text/javascript" https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-		<!-- Latest compiled JavaScript -->
-		<script type="text/javascript src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<meta name="viewport" content="width=device-width, initial-scale=1"/>
 	  	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>		
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.css">
+		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/bootstrap-table.min.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.11.1/locale/bootstrap-table-zh-CN.min.js"></script>
+		<script src="account.js" type="text/javascript"></script>
+
 	</head>
 	<body>
-		<table  border="1px" id="BookTable" class="table table-hover">
-			<thead>
-				<tr>
-					<th>Account</th>
-					<th>phone</th>
-					<th>is administrator</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>Bill cipher</td>
-					<td>6666-6666</td>
-					<td>no</td>
-				</tr>
-				<tr>
-					<td>Avatar korra</td>
-					<td>0000-1234</td>
-					<td>yes</td>
-				</tr>
-			</tbody>
+		<label>Login</label>
+			<form action="" method="post" >
+				Account&nbsp;&nbsp;<input name="Account" type="text" id="account"/><br /><br />
+				Password<input name="Password" type="password" id="password"/><br /><br />
+				&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
+				&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" onclick="return login();"/>
+			</form>
+			<br/>
+			<br/>
+		<label>User information</label>
+		<table  border="1px" id="accountTable" class="table table-hover">
+			
 		</table>
 	</body>
 </html>
