@@ -11,13 +11,25 @@
 		$name=$_POST["AuthorName"];
 		$email=$_POST["AuthorEmail"];
 		$phone=$_POST["AuthorPhoneNumber"];
-		$sql = "INSERT INTO library.author (email, phone_number, name)
-		VALUES 
-		(".
-			"\"".$email."\",".
-			"\"".$phone."\",".
-			"\"".$name."\""
-		.");";
+		$sql = "INSERT INTO library.author (name";
+		if($phone!='')
+		{
+			$sql=$sql.",phone_number";
+		}
+		if($email!='')
+		{
+			$sql=$sql.",email";
+		}
+		$sql=$sql.")VALUES (\"".$name."\"";
+		if($phone!='')
+		{
+			$sql=$sql.",\"".$phone."\"";
+		}
+		if($email!='')
+		{
+			$sql=$sql.",\"".$email."\"";
+		}
+		$sql=$sql.");";
 		$result = $conn->query($sql);
 		if ($result=== TRUE) {
 			echo "Insert Author success";
@@ -25,6 +37,7 @@
 			echo $sql."\n";
 			echo "Insert Author Fail";
 		}
+		$result->free();
 		$conn->close();
 	}
  

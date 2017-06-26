@@ -1,30 +1,33 @@
 login=function(){
-		console.log("Start search user\n");
-        $.post("account.php?",
-        {
-          account :$("#account").val(),
-          _password: $("#password").val()
-        },
-        function(data){
-			try
-			{
-			   var json = JSON.parse(data);		
-			   if(json.length!=0)
-			   {
 
-				   loadUserTable(json,"#accountTable");
-			   }
-			   else
-			   {
-				   alert("Query fail");
-			   }
-			   
-			}
-			catch(e)
+			console.log("Start search user\n");
+			$.post("account.php?",
 			{
-			   alert("Query fail");
-			}
-        });
+			  account :$("#account").val(),
+			  _password: $("#password").val()
+			},
+			function(data){
+				try
+				{
+				   var json = JSON.parse(data);		
+				   if(json.length!=0)
+				   {
+
+					   loadUserTable(json,"#accountTable");
+				   }
+				   else
+				   {
+					   alert("Query fail");
+				   }
+				   
+				}
+				catch(e)
+				{
+				   alert("Query fail");
+				}
+			});
+
+		
 		return false;
 }
 loadUserTable=function( myData, tableId)
@@ -98,7 +101,7 @@ addAuthor=function(){
 		{
 			alert(data);
 		}
-		)
+		);
 		return false;
 }
 deleteAuthor=function(){
@@ -111,7 +114,7 @@ deleteAuthor=function(){
 		{
 			alert(data);
 		}
-		)
+		);
 		return false;
 }
 addUser=function(){
@@ -129,7 +132,7 @@ addUser=function(){
 		{
 			alert(data);
 		}
-		)
+		);
 
 		return false;
 }
@@ -143,7 +146,7 @@ deletePublisher=function(){
 		{
 			alert(data);
 		}
-		)
+		);
 		return false;
 }
 addPublisher=function(){
@@ -158,7 +161,39 @@ addPublisher=function(){
 		{
 			alert(data);
 		}
-		)
+		);
+
+		return false;
+}
+deleteUser=function(){
+		console.log("Start Delete User\n");
+        $.post("deleteUser.php?",
+        {
+	      UserID :$("#UserID").val()
+        },
+        function(data)
+		{
+			alert(data);
+		}
+		);
+		return false;
+}
+addUser=function(){
+		console.log("Start add User\n");
+        $.post("addUser.php?",
+        {
+	        UserName :$("#UserName").val(),
+            Account :$("#Account").val(),
+            UserPassword: $("#UserPassword").val(),
+		    Birthday :$("#Birthday").val(),
+		    UserEmail :$("#UserEmail").val(),
+			IsAdministrator :$('#IsAdministrator').is(':checked')
+        },
+        function(data)
+		{
+			alert(data);
+		}
+		);
 
 		return false;
 }

@@ -17,9 +17,9 @@
 	<body>
 		<div class="container">
 			<label>Login</label>
-			<form action="" method="post" >
-				Account&nbsp;&nbsp;<input name="Account" type="text" id="account"/><br /><br />
-				Password&nbsp;&nbsp;<input name="Password" type="password" id="password"/><br /><br />
+			<form action="" method="post" id="loginForm">
+				Account&nbsp;&nbsp;<input name="Account" type="text" id="account" required/><br /><br />
+				Password&nbsp;&nbsp;<input name="Password" type="password" id="password" required/><br /><br />
 				&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
 				&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" onclick="return login();"/>
 			</form>
@@ -45,7 +45,7 @@
 				<div class="col-lg-6">
 					<form action="" method="post" class="bg-success text-white">
 						<label>Add Publisher</label><br/>
-						Name&nbsp;&nbsp;<input name="PublisherName" type="text" id="PublisherName"/><br /><br />
+						Name&nbsp;&nbsp;<input name="PublisherName" type="text" id="PublisherName" /><br /><br />
 						Address&nbsp;&nbsp;<input name="PublisherAddress" type="text" id="PublisherAddress"/><br /><br />
 						Phone number&nbsp;&nbsp;<input name="PublisherPhoneNumber" type="tel" id="PublisherPhoneNumber"/><br /><br />
 						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
@@ -55,7 +55,7 @@
 				<div class="col-lg-6">
 					<form action="" method="post" class="bg-info text-white">
 						<label>Delete Publisher</label><br/>
-						Author id&nbsp;&nbsp;<input name="PublisherID" type="text" id="PublisherID"/><br /><br />
+						Publisher id&nbsp;&nbsp;<input name="PublisherID" type="text" id="PublisherID" /><br /><br />
 						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
 						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" onclick="return deletePublisher();"/>
 					</form>
@@ -70,11 +70,11 @@
 				<div class="col-lg-6">
 					<form action="" method="post" class="bg-success text-white">
 						<label>Add Author</label><br/>
-						Name&nbsp;&nbsp;<input name="AuthorName" type="text" id="AuthorName"/><br /><br />
+						Name&nbsp;&nbsp;<input name="AuthorName" type="text" id="AuthorName" /><br /><br />
 						Email&nbsp;&nbsp;<input name="AuthorEmail" type="email" id="AuthorEmail"/><br /><br />
 						Phone number&nbsp;&nbsp;<input name="AuthorPhoneNumber" type="tel" id="AuthorPhoneNumber"/><br /><br />
 						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset"/>
-						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit"  onclick="return addAuthor();"/>
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit"   onclick="return addAuthor();"/>
 					</form>
 				</div>
 				<div class="col-lg-6">
@@ -101,13 +101,13 @@
 						Email&nbsp;&nbsp;<input name="UserEmail" type="email" id="UserEmail"/><br /><br />
 						Is administrator:&nbsp;&nbsp;<input type="checkbox" name="IsAdministrator" id="IsAdministrator"/><br>
 						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
-						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" onclick="return addUser()"/>
 					</form>
 				</div>
 				<div class="col-lg-6">
 					<form action="" method="post" class="bg-info text-white">
 						<label>Delete User</label><br/>
-						Account&nbsp;&nbsp;<input name="Account" type="text" id="Account"/><br /><br />
+						Account&nbsp;&nbsp;<input name="UserID" type="text" id="UserID"/><br /><br />
 						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
 						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
 					</form>
@@ -133,7 +133,7 @@
 				</div>
 				<div class="col-lg-6">
 					<form action="" method="post" class="bg-info text-white">
-						<label>Delete User</label><br/>
+						<label>Delete Book</label><br/>
 						Book id&nbsp;&nbsp;<input name="BookID" type="text" id="BookID"/><br /><br />
 						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
 						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />

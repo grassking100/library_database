@@ -11,13 +11,26 @@
 		$name=$_POST["PublisherName"];
 		$address=$_POST["PublisherAddress"];
 		$phone=$_POST["PublisherPhoneNumber"];
-		$sql = "INSERT INTO library.publisher (address, phone_number, name)
-		VALUES 
-		(".
-			"\"".$address."\",".
-			"\"".$phone."\",".
-			"\"".$name."\""
-		.");";
+		$sql = "INSERT INTO library.publisher (name";
+		if($phone!='')
+		{
+			$sql=$sql.",phone_number";
+		}
+		if($address!='')
+		{
+			$sql=$sql.",address";
+		}
+		$sql=$sql.")";
+		$sql=$sql."VALUES("."\"".$name."\"";
+			if($phone!='')
+			{
+				$sql=$sql.",\"".$phone."\"";
+			}
+			if($address!='')
+			{
+				$sql=$sql.",\"".$address."\"";
+			}
+		$sql=$sql.");";
 		$result = $conn->query($sql);
 		if ($result=== TRUE) {
 			echo "Insert Publisher success";
