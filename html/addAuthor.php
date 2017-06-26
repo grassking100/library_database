@@ -1,7 +1,9 @@
 <?php
 	$servername = "localhost";
-	$username = "newuser2";
-	$password="newpassword";
+	$username = $_POST["account"];
+	$password=$_POST["password"];
+	//$username = "newuser2";
+	//$password="newpassword";
 	$conn =  new mysqli($servername, $username, $password);
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
@@ -37,7 +39,6 @@
 			echo $sql."\n";
 			echo "Insert Author Fail";
 		}
-		$result->free();
 		$conn->close();
 	}
  

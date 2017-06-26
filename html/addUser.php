@@ -22,7 +22,7 @@
 		$sql=$sql.")VALUES (\"".$UserName."\"";
 		$sql=$sql.",\"".$Account."\"";
 		$sql=$sql.",\"".$UserPassword."\"";
-		$sql=$sql.",\"".$IsAdministrator."\"";
+		$sql=$sql.",\"".($IsAdministrator==="true")."\"";
 		$sql=$sql.",\"".$UserEmail."\"";
 		if($Birthday!='')
 		{
