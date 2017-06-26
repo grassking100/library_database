@@ -86,6 +86,34 @@ $(document).ready(function(){
 		}
 	)
 });
+addAuthor=function(){
+		console.log("Start add Author\n");
+        $.post("addAuthor.php?",
+        {
+	      AuthorName :$("#AuthorName").val(),
+          AuthorEmail :$("#AuthorEmail").val(),
+          AuthorPhoneNumber: $("#AuthorPhoneNumber").val()
+        },
+        function(data)
+		{
+			alert(data);
+		}
+		)
+		return false;
+}
+deleteAuthor=function(){
+		console.log("Start Delete Author\n");
+        $.post("deleteAuthor.php?",
+        {
+	      AuthorID :$("#AuthorID").val()
+        },
+        function(data)
+		{
+			alert(data);
+		}
+		)
+		return false;
+}
 addUser=function(){
 		console.log("Start add user\n");
         $.post("addUser.php?",
@@ -96,6 +124,35 @@ addUser=function(){
 		  Birthday: $("#Birthday").val(),
 		  Email: $("#Email").val(),
 		  IsAdministrator: $("#IsAdministrator").val()
+        },
+        function(data)
+		{
+			alert(data);
+		}
+		)
+
+		return false;
+}
+deletePublisher=function(){
+		console.log("Start Delete Publisher\n");
+        $.post("deletePublisher.php?",
+        {
+	      PublisherID :$("#PublisherID").val()
+        },
+        function(data)
+		{
+			alert(data);
+		}
+		)
+		return false;
+}
+addPublisher=function(){
+		console.log("Start add Publisher\n");
+        $.post("addPublisher.php?",
+        {
+	      PublisherName :$("#PublisherName").val(),
+          PublisherAddress :$("#PublisherAddress").val(),
+          PublisherPhoneNumber: $("#PublisherPhoneNumber").val()
         },
         function(data)
 		{

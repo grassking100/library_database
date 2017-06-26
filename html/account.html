@@ -49,7 +49,7 @@
 						Address&nbsp;&nbsp;<input name="PublisherAddress" type="text" id="PublisherAddress"/><br /><br />
 						Phone number&nbsp;&nbsp;<input name="PublisherPhoneNumber" type="tel" id="PublisherPhoneNumber"/><br /><br />
 						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
-						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit"  onclick="return addPublisher();"/>
 					</form>
 				</div>
 				<div class="col-lg-6">
@@ -57,7 +57,7 @@
 						<label>Delete Publisher</label><br/>
 						Author id&nbsp;&nbsp;<input name="PublisherID" type="text" id="PublisherID"/><br /><br />
 						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
-						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" onclick="return deletePublisher();"/>
 					</form>
 				</div>
 			</div>
@@ -73,8 +73,8 @@
 						Name&nbsp;&nbsp;<input name="AuthorName" type="text" id="AuthorName"/><br /><br />
 						Email&nbsp;&nbsp;<input name="AuthorEmail" type="email" id="AuthorEmail"/><br /><br />
 						Phone number&nbsp;&nbsp;<input name="AuthorPhoneNumber" type="tel" id="AuthorPhoneNumber"/><br /><br />
-						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
-						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset"/>
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit"  onclick="return addAuthor();"/>
 					</form>
 				</div>
 				<div class="col-lg-6">
@@ -82,7 +82,7 @@
 						<label>Delete Author</label><br/>
 						Author id&nbsp;&nbsp;<input name="AuthorID" type="text" id="AuthorID"/><br /><br />
 						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
-						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
+						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" onclick="return deleteAuthor()" />
 					</form>
 				</div>
 			</div>
@@ -149,6 +149,7 @@
 				<div class="col-lg-6">
 					<form action="" method="post" class="bg-success text-white">
 						<label>Add Physical Book</label><br/>
+						Logical Book id&nbsp;&nbsp;<input name="LogicalBookID" type="number" id="LogicalBookID"/><br /><br />
 						&nbsp;&nbsp;&nbsp;<input name="ResetLogin" type="reset" value="reset" />
 						&nbsp;&nbsp;&nbsp;<input name="SubmitLogin" type="submit" value="submit" />
 					</form>
