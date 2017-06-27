@@ -28,6 +28,9 @@ loadUserTable = function(myData, tableId) {
     $(tableId).bootstrapTable("destroy");
     $(tableId).bootstrapTable({
         columns: [{
+            field: 'user_id',
+            title: 'user_id'
+        },{
             field: 'name',
             title: 'name'
         }, {
@@ -42,7 +45,8 @@ loadUserTable = function(myData, tableId) {
         }, {
             field: 'email',
             title: 'email'
-        }],
+        }
+		],
         data: myData
     });
 }
@@ -174,6 +178,116 @@ addUser = function() {
             Birthday: $("#Birthday").val(),
             UserEmail: $("#UserEmail").val(),
             IsAdministrator: $('#IsAdministrator').is(':checked')
+        },
+        function(data) {
+            alert(data);
+        }
+    );
+
+    return false;
+}
+searchUser = function(condition) {
+    console.log("Start search User\n");
+    $.post("searchUser.php?", {
+			account: $("#account").val(),
+            password: $("#password").val(),
+            //searchAccount: $("#searchAccount").val(),
+            searchAccount: $("#searchAccount").val()
+        },
+        function(data) {
+            try {
+                var json = JSON.parse("\"" + data + "\"");
+                loadUserTable(data, "#userTable");
+            } catch (e) {
+				alert(data);
+                alert("Query fail");
+            }
+        });
+    return false;
+}
+deleteBook = function() {
+    console.log("Start Delete Book\n");
+    $.post("deleteBook.php?", {
+            account: $("#account").val(),
+            password: $("#password").val(),
+			BookID: $("#BookID").val()
+        },
+        function(data) {
+            alert(data);
+        }
+    );
+    return false;
+}
+addBook = function() {
+    console.log("Start add Book\n");
+    $.post("addBook.php?", {
+            account: $("#account").val(),
+            password: $("#password").val(),
+			Title: $("#Title").val(),
+			Author: $("#Author").val(),
+			Language: $("#Language").val(),
+			PublishDate: $("#PublishDate").val(),
+			Publisher: $("#Publisher").val()
+        },
+        function(data) {
+            alert(data);
+        }
+    );
+
+    return false;
+}
+deletePhysicalBook = function() {
+    console.log("Start Delete PhysicalBook\n");
+    $.post("deletePhysicalBook.php?", {
+            account: $("#account").val(),
+            password: $("#password").val(),
+			SubLogicalBookID: $("#SubLogicalBookID").val(),
+		    SubPhysicalBookID: $("#SubPhysicalBookID").val()
+
+        },
+        function(data) {
+            alert(data);
+        }
+    );
+    return false;
+}
+addPhysicalBook = function() {
+    console.log("Start add PhysicalBook\n");
+    $.post("addPhysicalBook.php?", {
+            account: $("#account").val(),
+            password: $("#password").val(),
+			LogicalBookID: $("#LogicalBookID").val()
+        },
+        function(data) {
+            alert(data);
+        }
+    );
+
+    return false;
+}
+deleteBorrow = function() {
+    console.log("Start Delete PhysicalBook\n");
+    $.post("deleteBorrow.php?", {
+            account: $("#account").val(),
+            password: $("#password").val(),
+			lB2: $("#lB2").val(),
+		    pB2: $("#pB2").val()
+
+        },
+        function(data) {
+            alert(data);
+        }
+    );
+    return false;
+}
+addBorrow = function() {
+    console.log("Start add PhysicalBook\n");
+    $.post("addBorrow.php?", {
+            account: $("#account").val(),
+            password: $("#password").val(),
+				lB: $("#lB").val(),
+		    pB: $("#pB").val(),
+			uI: $("#uI").val()
         },
         function(data) {
             alert(data);

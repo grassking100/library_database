@@ -1,7 +1,7 @@
 <?php
 	$servername = "localhost";
-	$username = "newuser2";
-	$password="newpassword";
+	$username = $_POST["account"];
+	$password=$_POST["password"];
 	$conn =  new mysqli($servername, $username, $password);
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);

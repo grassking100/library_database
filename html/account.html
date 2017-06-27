@@ -26,12 +26,22 @@
             <input name="SubmitLogin" type="submit" value="submit" onclick="return login();" />
         </form>
     </div>
+	
     <br/>
 
     <table border="1px" id="accountTable" class="table table-hover">
     </table>
+	<div id="searchUserPanel" class="bg-warning text-white">
+        <label>Search user</label>
+        <form action="" method="post" id="loginForm">
+            Account&nbsp;&nbsp;<input name="searchAccount" type="text" id="searchAccount" required/><br />
+            <input name="ResetLogin" type="reset" value="reset" /> &nbsp;&nbsp;&nbsp;
+            <input name="SubmitLogin" type="submit" value="submit" onclick="return searchUser();" />
+        </form>
+    </div>
     <br/>
-
+	<table border="1px" id="userTable" class="table table-hover">
+    </table>
     <div class="container">
         <button type="button" class="btn btn-primary" id="btnUser">Control user</button>
         <button type="button" class="btn btn-success" id="btnBook">Control book</button>
@@ -106,7 +116,7 @@
                     <label>Delete User</label><br/> Account&nbsp;&nbsp;
                     <input name="UserID" type="text" id="UserID" /><br /><br /> &nbsp;&nbsp;&nbsp;
                     <input name="ResetLogin" type="reset" value="reset" /> &nbsp;&nbsp;&nbsp;
-                    <input name="SubmitLogin" type="submit" value="submit" />
+                    <input name="SubmitLogin" type="submit" value="submit" onclick="return deleteUser()" />
                 </form>
             </div>
         </div>
@@ -119,17 +129,21 @@
             <div class="col-lg-6">
                 <form action="" method="post" class="bg-success text-white">
                     <label>Add Book</label><br/> Title&nbsp;&nbsp;
-                    <input name="Title" type="text" id="Title" /><br /><br /> Author id&nbsp;&nbsp;<input name="Author" type="number" id="Author" /><br /><br /> Language&nbsp;&nbsp;
-                    <input name="Language" type="text" id="Language" /><br /><br /> Publish date&nbsp;&nbsp;<input name="PublishDate" type="date" id="PublishDate" /><br /><br /> Publisher id&nbsp;&nbsp;<input name="Publisher" type="number" id="Publisher" /><br /><br /> &nbsp;&nbsp;&nbsp;
+                    <input name="Title" type="text" id="Title" /><br /><br /> 
+					Author id&nbsp;&nbsp;<input name="Author" type="number" id="Author" /><br /><br /> 
+					Language&nbsp;&nbsp; <input name="Language" type="text" id="Language" /><br /><br /> 
+					Publish date&nbsp;&nbsp;<input name="PublishDate" type="date" id="PublishDate" /><br /><br /> 
+					Publisher id&nbsp;&nbsp;<input name="Publisher" type="number" id="Publisher" /><br /><br /> 
+					&nbsp;&nbsp;&nbsp;
                     <input name="ResetLogin" type="reset" value="reset" /> &nbsp;&nbsp;&nbsp;
-                    <input name="SubmitLogin" type="submit" value="submit" />
+                    <input name="SubmitLogin" type="submit" value="submit" onclick="return addBook()"/>
                 </form>
             </div>
             <div class="col-lg-6">
                 <form action="" method="post" class="bg-info text-white">
                     <label>Delete Book</label><br/> Book id&nbsp;&nbsp;<input name="BookID" type="text" id="BookID" /><br /><br /> &nbsp;&nbsp;&nbsp;
                     <input name="ResetLogin" type="reset" value="reset" /> &nbsp;&nbsp;&nbsp;
-                    <input name="SubmitLogin" type="submit" value="submit" />
+                    <input name="SubmitLogin" type="submit" value="submit" onclick="return deleteBook();"/>
                 </form>
             </div>
         </div>
@@ -143,18 +157,52 @@
                 <form action="" method="post" class="bg-success text-white">
                     <label>Add Physical Book</label><br/> Logical Book id&nbsp;&nbsp;<input name="LogicalBookID" type="number" id="LogicalBookID" /><br /><br /> &nbsp;&nbsp;&nbsp;
                     <input name="ResetLogin" type="reset" value="reset" /> &nbsp;&nbsp;&nbsp;
-                    <input name="SubmitLogin" type="submit" value="submit" />
+                    <input name="SubmitLogin" type="submit" value="submit" onclick="return addPhysicalBook();"/>
                 </form>
             </div>
             <div class="col-lg-6">
                 <form action="" method="post" class="bg-info text-white">
-                    <label>Delete Physical Book</label><br/> Logical Book id&nbsp;&nbsp;<input name="SubBookID" type="number" id="SubBookID" /><br /><br /> Logical Physical id&nbsp;&nbsp;<input name="SubPhysicalBookID" type="number" id="SubPhysicalBookID" /><br /><br /> &nbsp;&nbsp;&nbsp;
+                    <label>Delete Physical Book</label><br/> 
+					Logical Book id&nbsp;&nbsp;<input name="SubLogicalBookID" type="number" id="SubLogicalBookID" /><br /><br />
+
+					Physical book id&nbsp;&nbsp;<input name="SubPhysicalBookID" type="number" id="SubPhysicalBookID" /><br /><br /> &nbsp;&nbsp;&nbsp;
                     <input name="ResetLogin" type="reset" value="reset" /> &nbsp;&nbsp;&nbsp;
-                    <input name="SubmitLogin" type="submit" value="submit" />
+                    <input name="SubmitLogin" type="submit" value="submit" onclick="return deletePhysicalBook();"/>
                 </form>
             </div>
         </div>
     </div>
+	
+	  <div id="Borrow_Reserve" class="bg-warning text-white">
+        <label>Borrow Panel</label>
+        <div class="row">
+            <div class="col-lg-6">
+                <form action="" method="post" class="bg-success text-white">
+                    <label>Add Borrow</label><br/> 
+					Logical Book id&nbsp;&nbsp;<input name="lB" type="number" id="lB" />
+					<br /><br /> &nbsp;&nbsp;&nbsp;
+					Physical Book id&nbsp;&nbsp;<input name="pB" type="number" id="pB" />
+					<br /><br /> &nbsp;&nbsp;&nbsp;
+					User id&nbsp;&nbsp;<input name="uI" type="number" id="uI" />
+					<br /><br /> &nbsp;&nbsp;&nbsp;
+                    <input name="ResetLogin" type="reset" value="reset" /> &nbsp;&nbsp;&nbsp;
+                    <input name="SubmitLogin" type="submit" value="submit" onclick="return addBorrow();"/>
+                </form>
+            </div>
+            <div class="col-lg-6">
+                <form action="" method="post" class="bg-info text-white">
+                    <label>Delete Borrow</label><br/> 
+					Logical Book id&nbsp;&nbsp;<input name="lB2" type="number" id="lB2" />
+					<br /><br /> &nbsp;&nbsp;&nbsp;
+					Physical Book id&nbsp;&nbsp;<input name="pB2" type="number" id="pB2" />
+					<br /><br /> &nbsp;&nbsp;&nbsp;
+                    <input name="ResetLogin" type="reset" value="reset" /> &nbsp;&nbsp;&nbsp;
+                    <input name="SubmitLogin" type="submit" value="submit" onclick="return deleteBorrow();"/>
+                </form>
+            </div>
+        </div>
+    </div>
+	
 </body>
 
 </html>

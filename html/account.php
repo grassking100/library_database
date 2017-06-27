@@ -2,8 +2,8 @@
 	function login($account,$password) 
 	{
 		$servername = "localhost";
-		$superUsername = "newuser2";
-		$superPassword="newpassword";
+		$superUsername = "controller";
+		$superPassword="controller";
 		$conn =  new mysqli($servername, $superUsername, $superPassword);
 		if ($conn->connect_error) {
 			die("Connection failed: " . $conn->connect_error);
@@ -12,6 +12,7 @@
 		{
 			$sql = "SELECT * FROM library.user where account=\"".$account."\" and password=\"".$password."\"";
 				//		echo $sql;
+				//$sql = "SELECT * FROM library.user left outer join library.physical_book on user_id=borrower_user_id"." where account=\"".$account."\" and password=\"".$password."\""
 			$result = $conn->query($sql);
 			if($result)
 			{
@@ -19,11 +20,13 @@
 				while($row = $result->fetch_assoc()) {
 					//echo "Start login\n";
 					$temp= array(
+						
+						user_id=>$row["user_id"],
 						name=>$row["name"],
 						account=>$row["account"],
 						isAdministrator=>$row["isAdministrator"],
 						birthday=>$row["birthday"],
-						email=>$row["email"],
+						email=>$row["email"]
 					);
 					array_push($returnResult,$temp);
 				}
@@ -51,8 +54,8 @@
 	}			
 
 	$servername = "localhost";
-	$superUsername = "newuser2";
-	$superPassword="newpassword";
+	$superUsername = "controller";
+	$superPassword="controller";
 	$conn =  new mysqli($servername, $superUsername, $superPassword);
 	
 	// Check connection

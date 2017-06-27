@@ -1,9 +1,7 @@
 <?php
 	$servername = "localhost";
-	$username = "newuser2";
-	$password="newpassword";
-	//$username = "root";
-	//$password = "ntnu1234";
+	$username = "guest";
+	$password="guest";
 	$database="library";
 	//
 	//port:3306

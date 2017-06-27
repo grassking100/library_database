@@ -2,9 +2,9 @@
 	$servername = "localhost";
 	$username = $_POST["account"];
 	$password=$_POST["password"];
-	//$username = "newuser2";
-	//$password="newpassword";
-	$conn =  new mysqli($servername, $username, $password);
+	$sqlDatabase="library";
+
+	$conn =  new mysqli($servername, $username, $password,$sqlDatabase);
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	} 

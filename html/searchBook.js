@@ -31,7 +31,11 @@ loadBookTable = function(myData, tableId) {
     $(tableId).bootstrapTable("destroy");
 
     $(tableId).bootstrapTable({
-        columns: [{
+        columns: [
+		{
+            field: 'book_id',
+            title: 'Book id'
+        }, {
             field: 'book_name',
             title: 'Title'
         }, {

@@ -8,22 +8,22 @@
 	} 
 	else
 	{
-		$id=$_POST["AuthorID"];
-		$sql = "DELETE FROM library.book_has_author WHERE author_id=\"".$id."\"";
+		$BookID=$_POST["BookID"];
+		$sql = "DELETE FROM library.book_has_author WHERE book_id=\"".$BookID."\"";
 		$result = $conn->query($sql);
 		if ($result=== TRUE) {
-			echo "Delete Book-Author success\n";
+			echo "Delete Book-author success\n";
 		} else {
 			echo $sql."\n";
-			echo "Delete Book-Author Fail\n";
+			echo "Delete Book-author Fail\n";
 		}
-		$sql = "DELETE FROM library.author WHERE author_id=\"".$id."\"";
+		$sql = "DELETE FROM library.book WHERE book_id=\"".$BookID."\"";
 		$result = $conn->query($sql);
 		if ($result=== TRUE) {
-			echo "Delete Author success\n";
+			echo "Delete Book success";
 		} else {
 			echo $sql."\n";
-			echo "Delete Author Fail\n";
+			echo "Delete Book Fail";
 		}
 		$conn->close();
 	}

@@ -8,15 +8,19 @@
 	} 
 	else
 	{
-		$id=$_POST["PublisherID"];
-		$sql = "DELETE FROM library.publisher WHERE publisher_id=".$id.";";
+		$lB=$_POST["lB2"];
+		$pB=$_POST["pB2"];
+
+		$sql = "UPDATE library.physical_book SET book_id=".$lB." ,physical_book_id=".$pB." ,borrower_user_id=NULL WHERE ";
+		$sql=$sql."book_id=".$lB." and physical_book_id=".$pB."";
 		$result = $conn->query($sql);
 		if ($result=== TRUE) {
-			echo "Delete Publisher success";
+			echo "Delete Borrow success\n";
 		} else {
 			echo $sql."\n";
-			echo "Delete Publisher Fail";
+			echo "Delete Borrow Fail\n";
 		}
+		
 		$conn->close();
 	}
  

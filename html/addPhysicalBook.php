@@ -8,15 +8,18 @@
 	} 
 	else
 	{
-		$id=$_POST["PublisherID"];
-		$sql = "DELETE FROM library.publisher WHERE publisher_id=".$id.";";
+		$LogicalBookID=$_POST["LogicalBookID"];
+		$sql = "INSERT INTO library.physical_book (book_id";
+		$sql=$sql.")";
+		$sql=$sql."VALUES(\"".$LogicalBookID."\");";
 		$result = $conn->query($sql);
 		if ($result=== TRUE) {
-			echo "Delete Publisher success";
+			echo "Insert physical Book success\n";
 		} else {
 			echo $sql."\n";
-			echo "Delete Publisher Fail";
+			echo "Insert physical Book Fail\n";
 		}
+		
 		$conn->close();
 	}
  

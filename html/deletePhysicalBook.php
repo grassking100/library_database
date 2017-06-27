@@ -8,14 +8,15 @@
 	} 
 	else
 	{
-		$id=$_POST["PublisherID"];
-		$sql = "DELETE FROM library.publisher WHERE publisher_id=".$id.";";
+		$SubLogicalBookID=$_POST["SubLogicalBookID"];
+			$SubPhysicalBookID=$_POST["SubPhysicalBookID"];
+		$sql = "DELETE FROM library.physical_book WHERE physical_book_id=\"".$SubPhysicalBookID."\" and book_id=\"".$SubLogicalBookID."\";";
 		$result = $conn->query($sql);
 		if ($result=== TRUE) {
-			echo "Delete Publisher success";
+			echo "Delete LogicalBook success\n";
 		} else {
 			echo $sql."\n";
-			echo "Delete Publisher Fail";
+			echo "Delete LogicalBook Fail\n";
 		}
 		$conn->close();
 	}

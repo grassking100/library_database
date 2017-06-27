@@ -1,7 +1,7 @@
 <?php
 	$servername = "localhost";
-	$username = "newuser2";
-	$password="newpassword";
+	$username = $_POST["account"];
+	$password=$_POST["password"];
 	$conn =  new mysqli($servername, $username, $password);
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
@@ -38,7 +38,7 @@
 		}
 		$sql="CREATE USER".
 		"\"".$Account."\"".
-		"@'%' IDENTIFIED BY ".
+		"@'localhost' IDENTIFIED BY ".
 		"\"".$UserPassword."\"".
 		";";
 		$result = $conn->query($sql);
@@ -52,18 +52,28 @@
 		$status=$IsAdministrator==="true";
 		if($status)
 		{
-			$sql="GRANT ALL PRIVILEGES ON library.* To ".
-			"\"".$Account."\"".
-			"@'%' IDENTIFIED BY ".
-			"\"".$UserPassword."\"";
+			$sql="GRANT ALL privileges ON *.* To ".
+			"\"".$Account."\"@'localhost' WITH GRANT OPTION;";
 			$result = $conn->query($sql);
 			if ($result=== TRUE) 
 			{
-			echo "Grant User super power success\n";
+				echo "Grant User super power success\n";
 			}
-			else {
+			else 
+			{
 				echo $sql."\n";
-				echo "Grant User power fail\n";
+				echo "Grant User super power fail\n";
+			}
+			$result = $conn->query("flush privileges;");
+			$result = $conn->query("GRANT CREATE USER ON *.* to \"".$Account."\"@'localhost' with grant option;");
+			if ($result=== TRUE) 
+			{
+				echo "GRANT CREATE USER success\n";
+			} 
+			else 
+			{
+				echo "GRANT CREATE USER ON library.* to \"".$Account."\"@'localhost' with grant option;"."\n";
+				echo "GRANT CREATE USER fail\n";
 			}
 		}
 		else
@@ -72,9 +82,7 @@
 			foreach($Arr as $value)
 			{
 				$sql="GRANT SELECT ON library.".$value." To ".
-				"\"".$Account."\"".
-				"@'%' IDENTIFIED BY ".
-				"\"".$UserPassword."\"";
+				"\"".$Account."\"@'localhost'";
 				$result = $conn->query($sql);
 				if ($result=== TRUE) 
 				{
@@ -87,6 +95,8 @@
 			}
 			
 		}
+		$result = $conn->query("flush privileges;");
+		
 		
 		$conn->close();
 	}

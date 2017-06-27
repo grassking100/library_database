@@ -1,4 +1,14 @@
-#GRANT ALL PRIVILEGES ON dbTest.* To 'test'@'%' IDENTIFIED BY 'md5(s)';
-#CREATE USER 'super'@'localhost' IDENTIFIED BY 'super';
-#SELECT * FROM mysql.user where user="super";
-#SELECT crypt("super");
+#DELETE FROM library.user WHERE account='controller';
+INSERT INTO library.user(name,account,password,isAdministrator,email) values('controller','controller','controller',1,'grassking100@gmail.com');
+#DROP USER 'controller'@'%';
+CREATE USER 'controller'@'%' IDENTIFIED BY 'controller';
+GRANT ALL privileges ON *.* To 'controller' WITH GRANT OPTION;
+flush privileges;
+#DELETE FROM library.user WHERE account='guest';
+INSERT INTO library.user(name,account,password,isAdministrator,email) values('guest','guest','guest',0,'grassking100@gmail.com');
+#DROP USER 'guest'@'%';
+CREATE USER 'guest'@'%' IDENTIFIED BY 'guest';
+GRANT SELECT ON library.book To 'guest';
+GRANT SELECT ON library.author To 'guest';
+GRANT SELECT ON library.publisher To 'guest';
+flush privileges;
