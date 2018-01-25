@@ -18,6 +18,7 @@ searchBook = function(condition) {
                 var json = JSON.parse("\"" + data + "\"");
                 loadBookTable(data, "#BookTable");
             } catch (e) {
+				  console.log(data);
                 alert("Query fail");
             }
             //

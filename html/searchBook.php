@@ -2,6 +2,8 @@
 	$servername = "localhost";
 	$username = "guest";
 	$password="guest";
+	//$username = "controller";
+	//$password="controller";
 	$database="library";
 	//
 	//port:3306
@@ -54,13 +56,14 @@
 			}
 			else
 			{
-				//echo "Fail to convert query to json\n";//$result;
+				echo "Fail to convert query to json\n";//$result;
 			}
 		
 		}
 		else
 		{
-		//	echo "fail to query\n";
+			echo $sql."\n";
+			echo "fail to query\n";
 		}
 		
 		$conn->close();

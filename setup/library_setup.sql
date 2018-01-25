@@ -141,22 +141,3 @@ AUTO_INCREMENT = 15
 DEFAULT CHARACTER SET = utf8;
 
 USE `library` ;
-
--- -----------------------------------------------------
--- function insertBook
--- -----------------------------------------------------
-
-DELIMITER $$
-USE `library`$$
-CREATE DEFINER=`root`@`localhost` FUNCTION `insertBook`(book_name1 varchar(200),language1 varchar(45),publish_date1 date,author_id1 int(11)) RETURNS int(11)
-begin
-  insert into library.book(book_name,language,publish_date) values(book_name1,language1,publish_date1);
-  insert into library.book_has_author(book_id,author_id) values( LAST_INSERT_ID(),author_id1);
-return 1;
-  end$$
-
-DELIMITER ;
-
-SET SQL_MODE=@OLD_SQL_MODE;
-SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
-SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
